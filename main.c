@@ -9,14 +9,15 @@
 #include <stdlib.h>
 
 
-#define TAMANHO 100
+#define TAMANHO 10
+#define LVRAND 100
 /*
  * 
  */
 int consulta (int valor, int quant, int vetor[])
 {
     int i;
-    quant--;
+
     
     for ( i=0 ; i<quant ; i++ )
     {
@@ -43,11 +44,11 @@ int main(int argc, char** argv) {
     for ( i=0 ; i<TAMANHO ; i++ )
     {
         do
-        {//falta situação vetor vazio
-        valor = rand()%999;
-        busca = consulta(valor, i, vetor);
+        {
+            valor = rand()%LVRAND;
+            busca = consulta(valor, i, vetor);
         }while (busca != -1);
-        
+        vetor[i] = valor;
     }
     
     
@@ -57,7 +58,7 @@ int main(int argc, char** argv) {
     }
     
     scanf("%d", &valor);
-//    busca = consulta(valor, vetor);
+    busca = consulta(valor, TAMANHO, vetor);
     
     
     printf("\n\n%d\n", busca);
