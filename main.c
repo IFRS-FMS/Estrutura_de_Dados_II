@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 
-#define TAMANHO 10
-#define LVRAND 100
+#define TAMANHO 100
+#define LVRAND 999
 /*
  * 
  */
