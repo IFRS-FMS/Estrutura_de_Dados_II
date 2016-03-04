@@ -29,6 +29,25 @@ int consulta (int valor, int quant, int vetor[])
     return -1;
 }
 
+void ordenar(int vetor[]){
+
+    int aux;
+    int i, j;
+    
+    for( i=TAMANHO-1 ; i >= 1 ; i--)
+    {  
+        for( j=0; j < i ; j++)
+        {
+            if(vetor[j]>vetor[j+1]) 
+            {    
+                aux = vetor[j];
+                vetor[j] = vetor[j+1];
+                vetor[j+1] = aux;
+            }
+        }
+    }
+}
+
 
 int main(int argc, char** argv) {
     
@@ -51,18 +70,22 @@ int main(int argc, char** argv) {
         vetor[i] = valor;
     }
     
-    
+/*    
     for ( i=0 ; i<TAMANHO ; i++ )
     {
         printf("%d\n", vetor[i]);
     }
-    
+ */   
     scanf("%d", &valor);
     busca = consulta(valor, TAMANHO, vetor);
-    
-    
     printf("\n\n%d\n", busca);
 
+    ordenar(vetor);
+    
+   scanf("%d", &valor);
+    busca = consulta(valor, TAMANHO, vetor);
+    printf("\n\n%d\n", busca);
+    
     
     return (EXIT_SUCCESS);
 }
