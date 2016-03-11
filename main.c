@@ -10,7 +10,7 @@
 
 
 #define TAMANHO 100
-#define LVRAND 999
+#define LVRAND 1000
 /*
  * 
  */
@@ -29,7 +29,7 @@ int consulta (int valor, int quant, int vetor[])
     return -1;
 }
 
-void ordenar(int vetor[]){
+void ordenarbs(int vetor[]){
 
     int aux;
     int i, j;
@@ -48,18 +48,26 @@ void ordenar(int vetor[]){
     }
 }
 
+int buscabinaria (int valor, int n, int vetor[]) {
+   int e, m, d;
+   e = 0; d = n-1;
+   while (e <= d) {
+      m = (e + d)/2;
+      if (vetor[m] == valor)
+           return m;
+      if (vetor[m] < valor)
+          e = m + 1;
+      else d = m - 1;
+   }
+   return -1;
+}                    
 
 int main(int argc, char** argv) {
     
     int i, valor, busca;
     int vetor[TAMANHO];
 
-/*    
-    for ( i=0 ; i<TAMANHO ; i++ )
-    {
-        vetor[i] = rand()%999;
-    }
-*/
+
     for ( i=0 ; i<TAMANHO ; i++ )
     {
         do
@@ -70,22 +78,15 @@ int main(int argc, char** argv) {
         vetor[i] = valor;
     }
     
-/*    
-    for ( i=0 ; i<TAMANHO ; i++ )
-    {
-        printf("%d\n", vetor[i]);
-    }
- */   
-    scanf("%d", &valor);
-    busca = consulta(valor, TAMANHO, vetor);
-    printf("\n\n%d\n", busca);
 
-    ordenar(vetor);
+    ordenarbs(vetor);
     
-   scanf("%d", &valor);
-    busca = consulta(valor, TAMANHO, vetor);
+    scanf("%d", &valor);
+//    busca = consulta(valor, TAMANHO, vetor);
+//    printf("\n\n%d\n", busca);
+    
+    busca = buscabinaria(valor, TAMANHO, vetor);
     printf("\n\n%d\n", busca);
-    
     
     return (EXIT_SUCCESS);
 }
